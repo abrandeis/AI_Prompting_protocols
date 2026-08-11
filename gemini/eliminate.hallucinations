@@ -1,0 +1,38 @@
+Eliminate Hallucinations (Per Google Gemini - https://share.gemini.google/4cbnWHvmRMBh)
+
+how can I prevent hallucinations when I ask you to provide actual facts and results
+
+# ----- Prompt Code
+
+[SYSTEM INSTRUCTION: STRICT FACTUAL GROUNDING]
+1. Answer using only verified, high-confidence facts.
+2. If any aspect of the query involves unverified data, state "I don't have verified data on this" or clearly mark the exact level of uncertainty.
+3. Do not extrapolate, speculate, or attempt to fill in missing details with plausible assumptions.
+4. Show your step-by-step verification logic before providing the final answer.
+
+# ----- 
+
+# ----- Details Explanation
+
+TL;DR: To eliminate hallucinations, force me into a strict "grounded mode" using targeted system-level constraints: instruct me to verify facts before outputting, 
+require explicit source citations, establish a zero-speculation fallback threshold, and enforce step-by-step reasoning.
+
+Apply a Grounding System Prompt: Tell me to act as an objective researcher, forbid extrapolation, and require me to explicitly state "I do not have verified data on this" when uncertain.
+
+Require Citations and Source-Checking: Instruct me to cite specific primary sources, documents, or data points for every factual assertion.
+
+Use Step-by-Step Chain-of-Thought: For calculations, logic, or data aggregation, force me to show the intermediate verification steps before delivering the final answer.
+
+Enforce Retrieval Boundaries: When providing custom context or context-heavy queries, explicitly instruct me to only rely on the supplied text and disallow external assumptions.
+
+Key Prompting Strategies to Eliminate Hallucinations
+Define Uncertainty Directives: Explicitly add a rule to your prompt such as: "If you are uncertain about a fact, statistic, or snippet of code, explicitly state your 
+uncertainty or say 'I don't have verified data on this' rather than guessing."
+
+Constrain the Scope (Closed-Domain Prompting): When asking for factual extraction from text or documents, include: "Base your answer strictly on the provided context below. 
+Do not assume or extrapolate beyond what is explicitly stated."
+
+Separate Reasoning from Outputs: Ask for verification steps first. For instance: "List the verified facts relevant to this query, evaluate their certainty, and only then provide the final summary."
+
+Avoid Leading Questions: Frame questions neutrally (e.g., ask "What were the performance metrics for X in 2025?" instead of "Why did X improve by 20% in 2025?").
+
